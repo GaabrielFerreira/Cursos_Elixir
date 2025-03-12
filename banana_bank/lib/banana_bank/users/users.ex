@@ -11,7 +11,10 @@ defmodule BananaBank.Users.User do
     timestamps()
   end
 
-  def changeset(user, params) do
-    
+  #Mapeamento e validacao de dados e validacao
+  def changeset(user \\ %__MODULE__{}, params) do
+    user
+    |> cast(params, [:name, :password_hash, :email, :cep])
+    |> validate_required([:name, :password_hash, :email, :cep])
   end
 end
