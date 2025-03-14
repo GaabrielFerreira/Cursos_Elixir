@@ -15,9 +15,10 @@ defmodule BananaBankWeb.UsersController do
     |> render(:create, user: user)
   end
 
-  #defp handle_response({:error, _changeset} = error, conn) do
-  #  conn
-  #  |> put_status(:bad_request) #:bad_request = status 400
-  #  |> render("error.json", error: error)
-  #end
+  defp handle_response({:error, changeset}, conn) do
+  conn
+  |> put_status(:bad_request) #:bad_request = status 400
+  |> put_view(json: BananaBankWeb.ErrorJSON)
+  |> render(:error, changeset: changeset)
+  end
 end
