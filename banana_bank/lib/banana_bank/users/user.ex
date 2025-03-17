@@ -43,8 +43,10 @@ defmodule BananaBank.Users.User do
   end
 
   defp add_password_hash(%Changeset{valid?: true, changes: %{password: password}} = changeset) do
-    change(changeset, Argon2.add_hash(password)) #Retorna o password_hash criptografado
+    password_hash = Argon2.hash_pwd_salt(password)
+    change(changeset, %{password_hash: password_hash}) #Retorna o password criptrografado
   end
+
 
   defp add_password_hash(changeset), do: changeset #Se o changeset for invalido retorna para nao salvar um erro
 end
