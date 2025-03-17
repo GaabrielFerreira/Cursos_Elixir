@@ -5,7 +5,8 @@ defmodule BananaBank.Users.User do
   alias Ecto.Changeset
   @required_params [:name, :password, :email, :cep]
 
-  schema "users" do
+  #@derive {Jason.Encoder, except: [:__meta__]} #Schema pode ser encodado em jason, apenas o nome (, only [:name])
+  schema "users" do                            #tbm podendo ser (, except [__meta__]) exibe tudo menos __meta__, remove usersjson data()
     field :name, :string
     field :password, :string, virtual: true #virtual: true significa que nao existe no banco de dados
     field :password_hash, :string
