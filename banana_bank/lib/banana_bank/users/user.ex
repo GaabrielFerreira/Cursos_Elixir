@@ -38,6 +38,7 @@ defmodule BananaBank.Users.User do
     |> validate_required(fields)
     |> validate_length(:name, min: 3) #Nome precisa ter no minimo 3 caracteres
     |> validate_format(:email, ~r/@/) #Email precisa ter @
+    |> validate_length(:password, min: 6) #Senha precisa ter no minimo 6 caracteres
     |> validate_length(:cep, is: 8) #Cep precisa ter 8 caracteres
   end
 
