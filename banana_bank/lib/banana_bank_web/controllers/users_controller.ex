@@ -29,4 +29,12 @@ defmodule BananaBankWeb.UsersController do
       |> render(:update, user: user)
     end
   end
+
+  def delete(conn, id) do
+    with ({:ok, %User{} = user} <- Users.delete(id)) do
+      conn
+      |> put_status(:ok) #ok = status 200
+      |> render(:delete, user: user)
+    end
+  end
 end
