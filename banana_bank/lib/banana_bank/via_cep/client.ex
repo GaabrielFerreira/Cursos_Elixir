@@ -11,7 +11,7 @@ defmodule BananaBank.ViaCep.Client do
   end
 
   defp handle_response ({:ok, %Tesla.Env{status: 200, body: %{"erro" => "true"}}}) do
-    {:erro, :not_found}
+    {:error, :not_found}
   end
 
   defp handle_response ({:ok, %Tesla.Env{status: 200, body: body}}) do
@@ -19,7 +19,7 @@ defmodule BananaBank.ViaCep.Client do
   end
 
   defp handle_response ({:ok, %Tesla.Env{status: 400}}) do
-    {:ok, :bad_request}
+    {:error, :bad_request}
   end
 
   defp handle_response ({:error, _}) do
