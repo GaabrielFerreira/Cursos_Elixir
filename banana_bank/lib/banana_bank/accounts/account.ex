@@ -9,13 +9,14 @@ defmodule BananaBank.Accounts.Account do
   schema "accounts" do
     field :balance, :decimal
     belongs_to :user, User
+    
 
     timestamps()
   end
 
   def changeset(account \\ %__MODULE__{}, params) do
     account
-    |> cast(paams, @required_params)
+    |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> check_constraint(:balance, name: :balance_must_be_positive)
   end
