@@ -10,7 +10,7 @@ defmodule BananaBankWeb.UsersJSON do
   def login(%{token: token}) do
     %{
       message: "User authenticated successfully",
-      bearer: token
+      Bearer: token
     }
   end
 
