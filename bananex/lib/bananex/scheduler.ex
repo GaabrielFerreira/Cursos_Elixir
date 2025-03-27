@@ -10,7 +10,7 @@ defmodule Bananex.Scheduler do
     InsertSingle2.call()
 
     schedule_event()
-    
+
     {:ok, state}
   end
 
@@ -24,7 +24,7 @@ defmodule Bananex.Scheduler do
   end
 
   defp schedule_event() do
-    Process.send_after(self(), :insert_fruits, :timer.seconds(2))
+    Process.send_after(self(), :insert_fruits, :timer.minutes(1))
   end
 
 

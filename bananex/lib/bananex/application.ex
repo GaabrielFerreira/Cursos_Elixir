@@ -17,7 +17,9 @@ defmodule Bananex.Application do
       # Start a worker by calling: Bananex.Worker.start_link(arg)
       # {Bananex.Worker, arg},
       # Start to serve requests, typically the last entry
-      BananexWeb.Endpoint
+      BananexWeb.Endpoint,
+
+      Bananex.Scheduler
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
