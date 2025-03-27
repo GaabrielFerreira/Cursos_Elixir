@@ -1,5 +1,5 @@
 defmodule Bananex.MyQeue do
-  use GenServer
+  use GenServer #Servidor que armazena estados
 
   #Server
   def init(state), do: {:ok, state}
