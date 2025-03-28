@@ -11,8 +11,8 @@ defmodule Twix.Repo.Migrations.AddUsersTable do
     end
 
     #NAO PODE SER ASSIM, para evitar que name e email sejam nulos
-    #create unique_index(:users, [nickname, email])
-    create unique_index(:users, [nickname])
-    create unique_index(:users, [email])
+    #create unique_index(:users, [:nickname, :email])
+    create unique_index(:users, [:nickname])
+    create unique_index(:users, [:email])
   end
 end
