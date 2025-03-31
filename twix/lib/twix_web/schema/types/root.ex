@@ -16,6 +16,13 @@ defmodule TwixWeb.Schema.Types.Root do
   end
 
   object :root_mutation do
+    field :add_like_to_post, type: :post do
+      arg :id, non_null(:id)
+
+      resolve &PostResolver.add_like/2
+      middleware TranslateErrors
+    end
+
     field :create_post, type: :post do
       arg :input, non_null(:create_post_input)
 
