@@ -1,6 +1,7 @@
 defmodule TwixWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :twix
-
+  use Absinthe.Phoenix.Endpoint
+  
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
@@ -15,6 +16,7 @@ defmodule TwixWeb.Endpoint do
     websocket: [connect_info: [session: @session_options]],
     longpoll: [connect_info: [session: @session_options]]
 
+  socket "/socket", TwixWeb.TwixSocket, websocket: true, longpoll: false
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest
