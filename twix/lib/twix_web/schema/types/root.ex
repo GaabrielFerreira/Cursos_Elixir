@@ -3,18 +3,26 @@ defmodule TwixWeb.Schema.Types.Root do
 
   alias Crudry.Middlewares.TranslateErrors
   alias TwixWeb.Resolvers.User, as: UserResolver
+  alias TwixWeb.Resolvers.Post, as: PostResolver
 
   import_types TwixWeb.Schema.Types.Post
   import_types TwixWeb.Schema.Types.User
 
-  object :root_query do             #{
-    field :get_user, type: :user do #   geUser(id: 1) {
-      arg :id, non_null(:id)        #       id, nickname, email
-      resolve &UserResolver.get/2           #   }
-    end                             #}
+  object :root_query do
+    field :get_user, type: :user do
+      arg :id, non_null(:id)
+      resolve &UserResolver.get/2
+    end
   end
 
   object :root_mutation do
+    field :create_post, type: :post do
+      arg :input, non_null(:create_post_input)
+
+      resolve &PostResolver.create/2
+      middleware TranslateErrors
+    end
+
     field :create_user, type: :user do
       arg :input, non_null(:create_user_input)
 
