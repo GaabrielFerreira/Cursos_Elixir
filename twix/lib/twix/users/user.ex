@@ -10,7 +10,7 @@ defmodule Twix.Users.User do
     field :nickname, :string
     field :email, :string
     field :age, :integer
-    has_many :post, Post
+    has_many :posts, Post
 
     timestamps()
   end

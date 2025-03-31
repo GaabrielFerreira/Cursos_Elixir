@@ -1,10 +1,10 @@
 defmodule TwixWeb.Schema.Types.Root do
-
-  alias Crudry.Middlewares.TranslateErrors
   use Absinthe.Schema.Notation
 
+  alias Crudry.Middlewares.TranslateErrors
   alias TwixWeb.Resolvers.User, as: UserResolver
 
+  import_types TwixWeb.Schema.Types.Post
   import_types TwixWeb.Schema.Types.User
 
   object :root_query do             #{
