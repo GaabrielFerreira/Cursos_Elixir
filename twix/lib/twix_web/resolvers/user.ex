@@ -12,4 +12,8 @@ defmodule TwixWeb.Resolvers.User do
     #   {:ok, result}
     # end
   end
+
+  def get_user_posts(user, %{page: page, per_page: per_page}, _context) do
+    Twix.get_user_posts(user, page, per_page)
+  end
 end
