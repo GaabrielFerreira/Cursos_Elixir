@@ -59,4 +59,25 @@ defmodule TwixWeb.SchemaTest do
       assert response == expected_response
     end
   end
+
+  describe "users mutation" do
+    test "when all params are valid, creates the user", %{conn: conn} do
+      query = """
+      mutation {
+        createUser(input: {nickname: "Gaaa", email: "gaaa@frutas.com", age: 19}) {
+          id
+          nickname
+        }
+      }
+      """
+
+      response =
+        conn
+        |> post("/api/graphql", %{query: query})
+        # Retorno automatico do GraphQL é 200
+        |> json_response(200)
+
+      assert %{"data" => %{"createUser" => %{"id" => _id, "nickname" => "Gaaa"}}} = response
+    end
+  end
 end
