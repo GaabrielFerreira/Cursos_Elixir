@@ -2,10 +2,10 @@ defmodule Twix.Users.Follow do
   alias Twix.Repo
   alias Twix.Users.Follower
   alias Twix.Users.User
-  
+
   def call(user_id, follower_id) do
     with {:ok, _user1} <- get_user(user_id),
-      {:ok, _user1} <- get_user(follower_id) do
+      {:ok, _user2} <- get_user(follower_id) do
         create_follower(user_id, follower_id)
       end
   end
