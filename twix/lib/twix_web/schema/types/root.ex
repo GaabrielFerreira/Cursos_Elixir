@@ -11,6 +11,7 @@ defmodule TwixWeb.Schema.Types.Root do
   object :root_query do
     field :get_user, type: :user do
       arg :id, non_null(:id)
+      
       resolve &UserResolver.get/2
     end
   end
@@ -57,6 +58,8 @@ defmodule TwixWeb.Schema.Types.Root do
       config fn _args, _context ->
         {:ok, topic: "new_follow_topic"}
       end
+
+      trigger :add_follower, topic: fn _context -> ["new_follow_topic"] end
     end
   end
 end
