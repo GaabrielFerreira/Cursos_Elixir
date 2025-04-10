@@ -22,7 +22,8 @@ defmodule Curso03.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:quantum, "~> 3.5"}
+      {:quantum, "~> 3.5"},
+      {:mock, "~> 0.3.7"}
     ]
   end
 end
